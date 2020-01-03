@@ -4,7 +4,7 @@ import {createLogger} from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 
 const sagaMiddleware=createSagaMiddleware();
-import * as sagas from "./sagas.mock";
+import * as sagas from "./saga";
 import * as mutations from "./mutations";
 export const store=createStore(
    combineReducers({
@@ -28,6 +28,7 @@ export const store=createStore(
                         task
                 })
             case mutations.SET_TASK_NAME:
+                console.log("First at Index")
                 return tasks.map(task=>{
                     return(task.id===action.taskID)
                     ?
@@ -60,5 +61,6 @@ export const store=createStore(
 );
 
 for(let saga in sagas){
+    console.log("heyyyyyy");
     sagaMiddleware.run(sagas[saga])
 }
