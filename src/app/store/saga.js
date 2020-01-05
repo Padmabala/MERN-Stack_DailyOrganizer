@@ -8,6 +8,7 @@ const url="http://localhost:8888";
 export function* taskCreationSaga(){
     while(true){
         const {groupID}=yield take(mutations.REQUEST_TASK_CREATION);
+        console.log("Createing in the group",groupID);
         const ownerID='u1';
         const taskID=uuid();
         yield put(mutations.createTask(taskID,groupID,ownerID));
@@ -17,7 +18,7 @@ export function* taskCreationSaga(){
                 group:groupID,
                 owner:ownerID,
                 isComplete:false,
-                name:"New Task"
+                name:"New Task is here"
             }
         })
         console.info("Got Response ",res);
