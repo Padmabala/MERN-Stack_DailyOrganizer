@@ -11,17 +11,17 @@ export const store=createStore(
     tasks(tasks=defaultState.tasks,action){
         switch(action.type){
             case mutations.CREATE_TASK:
-                // console.log(action);
+                console.log("Hereeeeeeeeeeee first")
                 return[...tasks,{
                     id:action.taskID,
-                    name:"New Task",
+                    name:action.name,
                     group:action.groupID,
                     owner:action.ownerID,
                     isComplete:false
                 }]
             case mutations.SET_TASK_COMPLETE:
                 return tasks.map(task=>{
-                    return(task.id===action.taskID)
+                    return(task.id===action.taskID)//taskID)
                         ?
                         {...task,isComplete:action.isComplete}
                         :
@@ -30,6 +30,7 @@ export const store=createStore(
             case mutations.SET_TASK_NAME:
                 console.log("First at Index")
                 return tasks.map(task=>{
+                    console.log("Chk this puit",action.name);
                     return(task.id===action.taskID)
                     ?
                     {...task,name:action.name}

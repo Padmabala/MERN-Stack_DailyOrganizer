@@ -16,11 +16,13 @@ app.use(
     bodyParser.urlencoded({extended:true}),
     bodyParser.json()
 );
+
 export const addNewTask=async task=>{
+    console.info("Gonna add new Task");
     let db=await connectDB();
     let collection=db.collection(`tasks`);
     await collection.insertOne(task);
-
+    console.info("completed");
 }
 
 export const updateTask=async task=>{
@@ -38,6 +40,8 @@ export const updateTask=async task=>{
     }
 }
 app.post('/task/new',async (req,res)=>{
+    console.info("goooooooooood mornig");
+    console.info("Reached here")
     let task=req.body.task;
     await addNewTask(task)
     res.status(200).send();

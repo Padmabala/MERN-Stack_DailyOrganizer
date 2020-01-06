@@ -9,7 +9,7 @@ export const requestTaskCreation=(groupID)=>({
     groupID
 });
 
-export const createTask=(taskID,groupID,ownerID)=>({
+export const createTask=(taskID,groupID,ownerID,name)=>({
     type:CREATE_TASK,
     taskID,
     groupID,
@@ -17,27 +17,34 @@ export const createTask=(taskID,groupID,ownerID)=>({
     name
 });
 
-export const setTaskCompletion=(id,isComplete)=>({
+export const setTaskCompletion=(taskID,isComplete)=>({
     
     type:SET_TASK_COMPLETE,
-    taskID:id,
+    taskID,
     isComplete
+    // taskID:id,
+    // isComplete
 })
 
-export const setTaskGroup=(id,groupID)=>({
+
+export const setTaskGroup=(taskID,groupID)=>({
     
     type:SET_TASK_GROUP,
-    taskID:id,
+    taskID,
     groupID
+    // taskID:id,
+    // groupID
 })
 
-export const setTaskName=(id,name)=>
+export const setTaskName=(taskID,name)=>
 
 {
     console.log("second at Mutations");
     return ({
     
     type:SET_TASK_NAME,
-    taskID:id,
+    taskID,
     name
+    //taskID:id,
+    //name
 })}

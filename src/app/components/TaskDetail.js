@@ -10,7 +10,7 @@ const TaskDetail=({id,comments,task,isComplete,groups,setTaskCompletion,setTaskG
             </div>
         </h2>
         <div>
-<button onClick={()=>setTaskCompletion(task.id,!isComplete)}>{isComplete?`Reopen`:`Complete`}</button>
+<button onClick={()=>setTaskCompletion(!isComplete)}>{isComplete?`Reopen`:`Complete`}</button>
         </div>
         <div>
         <select onChange={setTaskGroup} value={task.group}>
@@ -41,13 +41,26 @@ const mapStateToProps=(state,ownProps)=>{
 const mapDispatchToProps=(dispatch,ownProps)=>{
     const id=ownProps.match.params.id;
     return{
-        setTaskCompletion(id,isComplete){
+        setTaskCompletion(isComplete){
+            const task={
+                id,
+                isComplete
+            }
             dispatch(mutations.setTaskCompletion(id,isComplete))
         },
         setTaskGroup(e){
+            const task={
+                id,
+                group:e.target.value
+            }
             dispatch(mutations.setTaskGroup(id,e.target.value));
         },
         setTaskName(e){
+            const task={
+                id,
+                name:e.target.value
+            }
+            console.log("task is", task);
             dispatch(mutations.setTaskName(id,e.target.value));
         }
     }
