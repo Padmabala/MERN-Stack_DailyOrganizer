@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 const Navigation=()=>(
     <div>
         <Link to="/dashboard">
-            <h1>My Application</h1>
+            <h1>My Applications</h1>
         </Link>
     </div>
 )
